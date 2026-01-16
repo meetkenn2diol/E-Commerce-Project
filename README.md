@@ -1,16 +1,100 @@
-# React + Vite
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🛒 React E-Commerce Lite
 
-Currently, two official plugins are available:
+A lightweight, responsive e-commerce application built with **React**. This project allows users to browse a product catalog, manage a shopping cart, and simulate a checkout process using dynamic data.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+* **Product Listing:** Dynamically renders products sourced from a local `JSON` file.
+* **Selection & Details:** Click on products to view more details or select them for purchase.
+* **Shopping Cart:** Add products to a cart with real-time state updates.
+* **Checkout:** A simulated checkout flow to finalize selections.
+* **Reset Functionality:** Quickly clear the cart or reset the product list state with a single click.
+* **Responsive Design:** Styled with CSS to work on both desktop and mobile devices.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Frontend:** React.js
+* **Data Handling:** JSON, Fetch API / Local Imports
+* **Styling:** CSS3 (Custom modules or global stylesheets)
+* **Assets:** Optimized local images
+
+---
+
+## 📦 Installation & Setup
+
+1. **Clone the repository:**
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+
+```
+
+
+2. **Navigate into the directory:**
+```bash
+cd your-repo-name
+
+```
+
+
+3. **Install dependencies:**
+```bash
+npm install
+
+```
+
+
+4. **Start the development server:**
+```bash
+npm start
+
+```
+
+
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── assets/             # Product images and icons
+├── components/         # Cart, ProductCard, and Navbar components
+├── data/               # products.json (your database)
+├── App.js              # Main logic and state management
+├── index.css           # Global styles and layout
+└── ...
+
+```
+
+---
+
+## 📝 Data Format (JSON)
+
+The app consumes data in the following format from your `.json` files:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Classic T-Shirt",
+    "price": 25.00,
+    "image": "./assets/tshirt.jpg",
+    "description": "100% Cotton, comfortable fit."
+  }
+]
+
+```
+
+---
+
+## 💡 Usage
+
+* **Adding to Cart:** Click the "Add to Cart" button on any product card.
+* **Checking Out:** Navigate to the cart section and click "Checkout" to see your total.
+* **Resetting:** Use the "Reset" button in the header or cart to clear all current selections.
+
+---
