@@ -1,5 +1,3 @@
----
-
 # 🛒 React E-Commerce Lite
 
 A lightweight, responsive e-commerce application built with **React**. This project allows users to browse a product catalog, manage a shopping cart, and simulate a checkout process using dynamic data.
