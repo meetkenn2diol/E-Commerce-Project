@@ -4,8 +4,8 @@ A lightweight, responsive e-commerce application built with **React**. This proj
 
 ## 🚀 Features
 
-* **Product Listing:** Dynamically renders products sourced from a local `JSON` file.
-* **Selection & Details:** Click on products to view more details or select them for purchase.
+* **Product Listing:** Dynamically renders products sourced from a local `JSON` file.  
+* **Selection & Details:** Click on products to view more details or select them for purchase. 
 * **Shopping Cart:** Add products to a cart with real-time state updates.
 * **Checkout:** A simulated checkout flow to finalize selections.
 * **Reset Functionality:** Quickly clear the cart or reset the product list state with a single click.
