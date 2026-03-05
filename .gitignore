@@ -7,7 +7,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-frontend
+# Ignore the frontend folder as it is tracked separately
+frontend/*
+
 node_modules
 dist
 dist-ssr
