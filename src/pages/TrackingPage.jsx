@@ -1,14 +1,13 @@
-import Header from '../components/Header'
+import Header from "../components/Header";
 import "./tracking-page.css";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function TrackingPage() {
   return (
     <>
       <title>Tracking</title>
 
-      <Header/>
-
+      <Header />
 
       <div className="tracking-page">
         <div className="order-tracking">

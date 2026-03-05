@@ -1,13 +1,13 @@
-import Header from '../components/Header'
-import './orders-page.css';
-import {Link } from 'react-router-dom';
+import Header from "../components/Header";
+import "./orders-page.css";
+import { Link } from "react-router-dom";
 
 function OrdersPage() {
   return (
     <>
       <title>Orders</title>
 
-     <Header/>
+      <Header />
 
       <div className="orders-page">
         <div className="page-title">Your Orders</div>
