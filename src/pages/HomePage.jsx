@@ -1,13 +1,17 @@
-import axios from 'axios';
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import "./home-page.css";
-import { products } from "../../data/products";
 
 function HomePage() {
-  axios.get("http://localhost:3000/api/products")
-    .then((response) => {
-      console.log(response.data);
+  const backendBaseUrl = "http://localhost:3000/";
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${backendBaseUrl}api/products`).then((response) => {
+      setProducts(response.data);
     });
+  }, []);
 
   return (
     <>
@@ -21,7 +25,10 @@ function HomePage() {
             return (
               <div key={product.id} className="product-container">
                 <div className="product-image-container">
-                  <img className="product-image" src={product.image} />
+                  <img
+                    className="product-image"
+                    src={backendBaseUrl + product.image}
+                  />
                 </div>
 
                 <div className="product-name limit-text-to-2-lines">
@@ -31,7 +38,7 @@ function HomePage() {
                 <div className="product-rating-container">
                   <img
                     className="product-rating-stars"
-                    src={`../src/assets/images/ratings/rating-${product.rating.stars * 10}.png`}
+                    src={`${backendBaseUrl}images/ratings/rating-${product.rating.stars * 10}.png`}
                   />
                   <div className="product-rating-count link-primary">
                     {product.rating.count}
@@ -60,7 +67,7 @@ function HomePage() {
                 <div className="product-spacer"></div>
 
                 <div className="added-to-cart">
-                  <img src="../src/assets/images/icons/checkmark.png" />
+                  <img src={`${backendBaseUrl}images/icons/checkmark.png`} />
                   Added
                 </div>
 
@@ -70,7 +77,6 @@ function HomePage() {
               </div>
             );
           })}
-          ;
         </div>
       </div>
     </>
