@@ -6,10 +6,15 @@ import "./home-page.css";
 function HomePage() {
   const backendBaseUrl = "http://localhost:3000/";
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     axios.get(`${backendBaseUrl}api/products`).then((response) => {
       setProducts(response.data);
+    });
+
+    axios.get(`${backendBaseUrl}api/cart-items `).then((response) => {
+      setCart(response.data);
     });
   }, []);
 
@@ -17,7 +22,7 @@ function HomePage() {
     <>
       <title>E-Commerce</title>
 
-      <Header />
+      <Header cart = {cart}/>
 
       <div className="home-page">
         <div className="products-grid">
