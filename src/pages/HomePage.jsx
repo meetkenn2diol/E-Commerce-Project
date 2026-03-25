@@ -4,16 +4,15 @@ import Header from "../components/Header";
 import "./home-page.css";
 
 function HomePage() {
-  const backendBaseUrl = "http://localhost:3000/";
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    axios.get(`${backendBaseUrl}api/products`).then((response) => {
+    axios.get(`api/products`).then((response) => {
       setProducts(response.data);
     });
 
-    axios.get(`${backendBaseUrl}api/cart-items `).then((response) => {
+    axios.get(`api/cart-items `).then((response) => {
       setCart(response.data);
     });
   }, []);
@@ -32,7 +31,7 @@ function HomePage() {
                 <div className="product-image-container">
                   <img
                     className="product-image"
-                    src={backendBaseUrl + product.image}
+                    src={product.image}
                   />
                 </div>
 
@@ -43,7 +42,7 @@ function HomePage() {
                 <div className="product-rating-container">
                   <img
                     className="product-rating-stars"
-                    src={`${backendBaseUrl}images/ratings/rating-${product.rating.stars * 10}.png`}
+                    src={`images/ratings/rating-${product.rating.stars * 10}.png`}
                   />
                   <div className="product-rating-count link-primary">
                     {product.rating.count}
@@ -72,7 +71,7 @@ function HomePage() {
                 <div className="product-spacer"></div>
 
                 <div className="added-to-cart">
-                  <img src={`${backendBaseUrl}images/icons/checkmark.png`} />
+                  <img src={`images/icons/checkmark.png`} />
                   Added
                 </div>
 
