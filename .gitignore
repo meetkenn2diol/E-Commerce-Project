@@ -8,6 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # Ignore the frontend folder as it is tracked separately
+frontend
+frontend*
 frontend/*
 
 node_modules
