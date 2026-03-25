@@ -11,10 +11,10 @@ function CheckoutPage() {
         <div className="header-content">
           <div className="checkout-header-left-section">
             <Link to="/">
-              <img className="logo" src="../src/assets/images/logo.svg" />
+              <img className="logo" src="images/logo.svg" />
               <img
                 className="mobile-logo"
-                src="../src/assets/images/mobile-logo.svg"
+                src="images/mobile-logo.svg"
               />
             </Link>
           </div>
@@ -28,7 +28,7 @@ function CheckoutPage() {
           </div>
 
           <div className="checkout-header-right-section">
-            <img src="../src/assets/images/icons/checkout-lock-icon.png" />
+            <img src="images/icons/checkout-lock-icon.png" />
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@ function CheckoutPage() {
               <div className="cart-item-details-grid">
                 <img
                   className="product-image"
-                  src="../src/assets/images/products/athletic-cotton-socks-6-pairs.jpg"
+                  src="images/products/athletic-cotton-socks-6-pairs.jpg"
                 />
 
                 <div className="cart-item-details">
@@ -127,7 +127,7 @@ function CheckoutPage() {
               <div className="cart-item-details-grid">
                 <img
                   className="product-image"
-                  src="../src/assets/images/products/intermediate-composite-basketball.jpg"
+                  src="images/products/intermediate-composite-basketball.jpg"
                 />
 
                 <div className="cart-item-details">
