@@ -1,7 +1,7 @@
-import Header from "../components/Header";
+import Header from "../../components/Header";
 import axios from "axios";
 import dayjs from "dayjs";
-import { formatMoney } from "../utils/Money";
+import { formatMoney } from "../../utils/Money";
 import { useState, useEffect, Fragment } from "react";
 import "./orders-page.css";
 import { Link } from "react-router-dom";
@@ -10,9 +10,12 @@ function OrdersPage({ cart }) {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/orders?expand=products").then((response) => {
+    const fetchOrdersData = async () => {
+      let response = await axios.get("/api/orders?expand=products");
       setOrders(response.data);
-    });
+    };
+
+    fetchOrdersData();
   }, []);
 
   return (
