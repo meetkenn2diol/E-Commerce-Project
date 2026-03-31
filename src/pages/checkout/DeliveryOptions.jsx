@@ -26,7 +26,7 @@ export function DeliveryOptions({ deliveryOptions, cartItem }) {
                   "dddd, MMMM D",
                 )}
               </div>
-              <div className="delivery-option-price">priceString</div>
+              <div className="delivery-option-price">{priceString}</div>
             </div>
           </div>
         );
