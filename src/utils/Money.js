@@ -1,3 +1,5 @@
 export function formatMoney(amountInCents){
-    return `$${(amountInCents / 100).toFixed(2)}`;
-}
+    const absoluteCents = Math.abs(amountInCents);
+    const sign = amountInCents < 0 ? '-' : '';
+    return `${sign}$${(absoluteCents / 100).toFixed(2)}`;
+  }

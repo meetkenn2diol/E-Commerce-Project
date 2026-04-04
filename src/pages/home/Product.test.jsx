@@ -14,6 +14,9 @@ describe("Product component test", () => {
   //A mock function (i.e fake function)
   let loadCart;
 
+  //for user event
+  let user;
+
   //recreate the shared variables before each test
   beforeEach(() => {
     product = {
@@ -29,6 +32,7 @@ describe("Product component test", () => {
     };
 
     loadCart = vi.fn();
+    user = userEvent.setup();
   });
 
   it("displays the product details correctly", () => {
@@ -58,7 +62,6 @@ describe("Product component test", () => {
   it("adds a product to the cart", async () => {
     render(<Product product={product} loadCart={loadCart} />);
 
-    const user = userEvent.setup();
     const addToCartButton = screen.getByTestId("add-to-cart-button");
     await user.click(addToCartButton);
 
@@ -68,6 +71,35 @@ describe("Product component test", () => {
       quantity: 1,
     });
     //check if loadCart is called
+    expect(loadCart).toHaveBeenCalled();
+  });
+
+  it("can select a quantity", async () => {
+    // Render the Product component with our dummy data and mock function
+    render(<Product product={product} loadCart={loadCart} />);
+
+    // Retrieve the quantity dropdown menu from the rendered screen
+    const quantitySelector = screen.getByTestId("quantity-selector");
+    // Ensure the default value in the dropdown is '1'
+    expect(quantitySelector).toHaveValue("1");
+
+    // Simulate a user changing the dropdown selection to '3'
+    await user.selectOptions(quantitySelector, "3");
+
+    // Check that the dropdown successfully updated its value to '3'
+    expect(quantitySelector).toHaveValue("3");
+
+    // Find the "Add to Cart" button on the screen
+    const addToCartButton = screen.getByTestId("add-to-cart-button");
+    // Simulate a user clicking the "Add to Cart" button
+    await user.click(addToCartButton);
+
+    // Verify an API request was sent to add the correct product and the updated quantity (3)
+    expect(axios.post).toHaveBeenCalledWith("/api/cart-items", {
+      productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+      quantity: 3,
+    });
+    // Verify the parent component's cart update function was called
     expect(loadCart).toHaveBeenCalled();
   });
 });
