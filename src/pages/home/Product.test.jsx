@@ -1,16 +1,22 @@
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
-import userEvent from '@testing-library/user-event';
-import axios from 'axios';
+import userEvent from "@testing-library/user-event";
+import axios from "axios";
 import Product from "./Product";
 
 //mocks the entire axios package
-vi.mock('axios');
+vi.mock("axios");
 
 describe("Product component test", () => {
-  it("displays the product details correctly", () => {
-    //A dummy product
-    const product = {
+  //A dummy product
+  let product;
+
+  //A mock function (i.e fake function)
+  let loadCart;
+
+  //recreate the shared variables before each test
+  beforeEach(() => {
+    product = {
       id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
       image: "images/products/athletic-cotton-socks-6-pairs.jpg",
       name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
@@ -22,9 +28,10 @@ describe("Product component test", () => {
       keywords: ["socks", "sports", "apparel"],
     };
 
-    //A mock function (i.e fake function)
-    const loadCart = vi.fn();
+    loadCart = vi.fn();
+  });
 
+  it("displays the product details correctly", () => {
     render(<Product product={product} loadCart={loadCart} />);
 
     expect(
@@ -47,24 +54,8 @@ describe("Product component test", () => {
     expect(screen.getByText("87")).toBeInTheDocument();
   });
 
-//testing user interaction
-  it('adds a product to the cart',async ()=>{
-       //A dummy product
-    const product = {
-      id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-      image: "images/products/athletic-cotton-socks-6-pairs.jpg",
-      name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
-      rating: {
-        stars: 4.5,
-        count: 87,
-      },
-      priceCents: 1090,
-      keywords: ["socks", "sports", "apparel"],
-    };
-
-    //A mock function (i.e fake function)
-    const loadCart = vi.fn();
-
+  //testing user interaction
+  it("adds a product to the cart", async () => {
     render(<Product product={product} loadCart={loadCart} />);
 
     const user = userEvent.setup();
@@ -72,14 +63,11 @@ describe("Product component test", () => {
     await user.click(addToCartButton);
 
     //expect our code to run axios.post
-    expect(axios.post).toHaveBeenCalledWith(
-        '/api/cart-items',
-        {
-            productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-            quantity: 1
-        }
-    );
+    expect(axios.post).toHaveBeenCalledWith("/api/cart-items", {
+      productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+      quantity: 1,
+    });
     //check if loadCart is called
     expect(loadCart).toHaveBeenCalled();
-  })
+  });
 });
