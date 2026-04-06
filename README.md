@@ -3,13 +3,13 @@
 A lightweight, responsive e-commerce application built with **React**. This project allows users to browse a product catalog, manage a shopping cart, and simulate a checkout process using dynamic data.
 
 # 📝 Important Note:
---- use the **backend** branch to run backend server
---- use the **dynamic-pages** branch for the frontend server
+* use the **backend** branch to run backend server
+* use the **dynamic-pages** branch for the frontend server
 
 
 # Extra Branches
---- **static pages** branch doesn't need a backend as the pages are static
---- **dynamic-pages-with-automated-tests** contains some test files for some of the components used in this project
+* **static pages** branch doesn't need a backend as the pages are static
+* **dynamic-pages-with-automated-tests** contains some test files for some of the components used in this project
 
 ## 🚀 Features
 
