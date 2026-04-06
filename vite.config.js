@@ -1,22 +1,28 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
 
 //  https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-    //shortcuts for working with url
-  server:{
-    proxy:{
-      '/api':{
-        target: "http://localhost:3000"
+  plugins: [
+    react({
+      babel: {
+        plugins: [["babel-plugin-react-compiler", { target: "19" }]],
       },
-      '/images':{
-        target: "http://localhost:3000"
-      }
-    }
+    }),
+  ],
+  //shortcuts for working with url
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:3000",
+      },
+      "/images": {
+        target: "http://localhost:3000",
+      },
+    },
   },
   //tells vite where to put the final frontend files after building
-  build:{
-    outDir:"../backend/dist"
-  }
-})
+  build: {
+    outDir: "../backend/dist",
+  },
+});
